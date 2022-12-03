@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    tools:context=".Investor.MainDashboardInvestor">
+
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/fundmelogo"
+        app:layout_constraintBottom_toTopOf="@+id/doAnInvestmentMDIBt"
+        app:layout_constraintEnd_toEndOf="@+id/doAnInvestmentMDIBt"
+        app:layout_constraintStart_toStartOf="@+id/doAnInvestmentMDIBt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/doAnInvestmentMDIBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/do_an_investment"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/checkInvestmentDetailsMDIBt"
+        app:layout_constraintEnd_toEndOf="@+id/checkInvestmentDetailsMDIBt"
+        app:layout_constraintStart_toStartOf="@+id/checkInvestmentDetailsMDIBt"
+        app:layout_constraintTop_toBottomOf="@+id/appLogo" />
+
+    <Button
+        android:id="@+id/checkInvestmentDetailsMDIBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/check_investment_details"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/talkWSupportMDIBt"
+        app:layout_constraintEnd_toEndOf="@+id/talkWSupportMDIBt"
+        app:layout_constraintStart_toStartOf="@+id/talkWSupportMDIBt"
+        app:layout_constraintTop_toBottomOf="@+id/doAnInvestmentMDIBt" />
+
+    <Button
+        android:id="@+id/talkWSupportMDIBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/talk_with_support"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/getAccessPersonalInfoMDIBt"
+        app:layout_constraintEnd_toEndOf="@+id/getAccessPersonalInfoMDIBt"
+        app:layout_constraintStart_toStartOf="@+id/getAccessPersonalInfoMDIBt"
+        app:layout_constraintTop_toBottomOf="@+id/checkInvestmentDetailsMDIBt" />
+
+    <Button
+        android:id="@+id/getAccessPersonalInfoMDIBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/get_access_to_personal_information"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/talkWSupportMDIBt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

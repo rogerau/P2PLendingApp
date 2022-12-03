@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    android:orientation="vertical"
+    tools:context=".Investor.InvestmentDetails.CheckInvestmentDetails">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/logo"
+        android:padding="10dp"
+        android:src="@drawable/fundmelogo" />
+
+    <TextView
+        android:id="@+id/titleCheckInvestmentD"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="20dp"
+        android:text="@string/investment_details_more"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/optionsContainerInvestmentD"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/checkInvestmentInvesmentDBt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="addIDetailFragment"
+            android:text="@string/check_investment_s_details"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/rCheckInvestmentInvestmentDBt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="removeIDetailFragment"
+            android:text="@string/remove_investment_s_details"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/goBackInvestmentDBt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:text="@string/go_back"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/detailsContainerInvestmentD"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:layout_margin="10dp">
+
+    </FrameLayout>
+
+
+</LinearLayout>

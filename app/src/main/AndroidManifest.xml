@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.p2plendingapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.P2PLendingApp">
+        <activity
+            android:name=".Support.EmailSupport"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Login.SignupActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Login.ResetActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Login.LoginActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Login.ForgotPasswordActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Login.EntranceActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Investor.InvestmentDetails.CheckInvestmentDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Investor.MarketPlace_Java.MarketPlaceAccess"
+            android:exported="false" />
+        <activity
+            android:name=".Investor.InvestorsApplicationForm"
+            android:exported="false" />
+        <activity
+            android:name=".Investor.MainDashboardInvestor"
+            android:exported="false" />
+        <activity
+            android:name=".Borrower.LoanDetails.CheckLoanDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Borrower.MainDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Borrower.DisplaySummary"
+            android:exported="false" />
+        <activity
+            android:name=".Borrower.BorrowersApplicationForm"
+            android:exported="false" />
+        <activity
+            android:name=".General.AgreeGeneralForm"
+            android:exported="false" />
+        <activity
+            android:name=".General.ProfileSelection"
+            android:exported="false" />
+    </application>
+
+</manifest>

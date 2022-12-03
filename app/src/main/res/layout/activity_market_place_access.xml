@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    android:orientation="vertical"
+    tools:context=".Investor.MarketPlace_Java.MarketPlaceAccess">
+
+
+    <LinearLayout
+        android:id="@+id/titleContainerMP"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:background="@color/black"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titleIdMPTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/borrower_id"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/titleLAMPTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/lend_amount"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/titleRLMPTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/risk_lvl"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/titleEEMPTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/estimated_earning"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/titleSMPTv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/select_multiple"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/iOpportunitiesList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/continueButtonsContainerMP"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:layout_weight="0.1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/continueMPButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:onClick="showDealDialog"
+            android:text="@string/continuex" />
+
+        <Button
+            android:id="@+id/goBackMPButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:text="@string/go_back" />
+    </LinearLayout>
+
+</LinearLayout>

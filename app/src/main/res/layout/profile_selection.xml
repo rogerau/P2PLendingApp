@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    tools:context=".General.ProfileSelection">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/fundmelogo"
+        app:layout_constraintBottom_toTopOf="@+id/wantToBeBorrowerBt"
+        app:layout_constraintEnd_toEndOf="@+id/wantToBeBorrowerBt"
+        app:layout_constraintStart_toStartOf="@+id/wantToBeBorrowerBt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/wantToBeBorrowerBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/i_want_to_be_a_borrower"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/wantToBeInvestorBt"
+        app:layout_constraintEnd_toEndOf="@+id/wantToBeInvestorBt"
+        app:layout_constraintStart_toStartOf="@+id/wantToBeInvestorBt"
+        app:layout_constraintTop_toBottomOf="@+id/appLogo" />
+
+    <Button
+        android:id="@+id/wantToBeInvestorBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/i_want_to_be_an_investor"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wantToBeBorrowerBt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

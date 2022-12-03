@@ -1,0 +1,309 @@
+<resources>
+    <string name="app_name">P2PLendingApp</string>
+    <string name="i_want_to_be_a_borrower">I want to be a Borrower!</string>
+    <string name="i_want_to_be_an_investor">I want to be an Investor!</string>
+    <string name="terms_and_conditions">
+        <h1><b>TERMS AND GENERAL CONDITIONS</b> </h1>
+        <br></br>
+        <h2><b>1. AGREEMENT TO TERMS</b></h2>
+        <p>
+            These Terms and General Conditions constitute
+            a legally binding agreement made between you,
+            whether personally or on behalf of an entity
+            ("you") and FundMe App ("Company", "we", "us",
+            or, "our"), concerning your access to and use of the
+            FundMe App mobile application. We are registered
+            in Canada and have our office registered at 700 Royal
+            Ave, New Westminster V3M 5Z5. You agree that by
+            accessing the App, you have read, understood, and
+            agree to be bound by all of these Term and General
+            conditions. IF YOU DO NOT AGREE WITH ALL OF
+            THESE TERMS AND GENERAL CONDITIONS, THEN
+            YOU ARE EXPRESSLY PROHIBITED FROM USING THE
+            APP AND YOU MUST DISCONTINUE USE
+            IMMEDIATELY.
+        </p>
+        <p>
+            We reserve the right, in our sole discretion, to make
+            changes or modifications to these Terms and General
+            Conditions, and you waive any right to receive specific
+            notice of each such change. Please ensure that you
+            check the applicable Terms every time you use our
+            App so that you understand which Terms apply.
+            You will be subject to, and will be deemed to have
+            been made aware of and to have accepted, the
+            changes in any revised Terms and General
+            Conditions by your continued use of the App after
+            the date such revised Terms and General
+            Conditions are posted.
+        </p>
+        <p>
+            The App is intended for users who are at least
+            18 years old. Persons under the age of 18 are not
+            permitted to use or register to this App.
+        </p>
+        <h2><b>2. INTELLECTUAL PROPERTY RIGHTS</b></h2>
+        <p>
+            Unless otherwise indicated, the App is our
+            property and all source code, databases, functionality,
+            software, App designs, text, photographs,
+            and graphics on the App and the trademarks,
+            service marks, and logos contained are owned or
+            controlled by us or licenced to us.
+        </p>
+        <h2><b>3. USER REPRESENTATIONS</b></h2>
+        <p>
+            By using the App, you represent and warrant that:
+            (1) all registration information you submit will
+            be true, accurate, current, and complete;
+            (2) you will maintain the accuracy of such information
+            and promptly update such registration information
+            as necessary;
+            (3) you have the legal capacity and you agree
+            to comply with these Terms and General Conditions;
+            (4) you are not a minor in the jurisdiction in which
+            you reside;
+            (5) you will no access the App through automated
+            or non-human means, whether through a bot, script
+            or otherwise;
+            (6) you will not use the App for any illegal or
+            unauthorized purpose; and
+            (7) your use of the App will not violate any
+            applicable law or regulation.
+            If you provide any information that is untrue,
+            inaccurate, not current, or incomplete,
+            we have the right to suspend or terminate your
+            account and refuse any and all current
+            or future use of the App.
+        </p>
+        <h2><b>4. USER REGISTRATION</b></h2>
+        <p>
+            You may be required to register with the App.
+            You agree to keep your password confidential and will
+            be responsible for all use of your account
+            and password. We reserve the right to remove,
+            reclaim, or change a username you select if we
+            determine, in our sole discretion, that such
+            username is inappropriate, obscene, or otherwise
+            objectionable.
+        </p>
+        <h2><b>5. FEES AND PAYMENTS</b></h2>
+        <p>
+            <b>Borrowers Fees:</b>
+            FundMe charges a <i>progressive origination fee</i> of 2%
+            of the lend amount from $1000 to $4999,
+            3% of the lend amount from $5000 to $14999,
+            and 4% of the lend amount from $15000 to $25000
+            to the borrowers.
+            <br></br>
+            Also, charges a <i>late payment fee</i> as percent
+            of transaction size of 10% of unpaid
+            installment amount (per unpaid installment)
+            <br></br>
+            Finally, charges a <i>unsuccessful payment fee</i> as
+            flat rate of $50 every time no funds on bank account
+            or problem to charge.
+            <br></br>
+            <b>Investors Fee:</b>
+            FundMe charges a <i>service fee</i> which is a %
+            of the unpaid principal balance at the end of each
+            month, deducted from loan repayments.
+            The % depends on the risk level of the borrower
+            the investor is willing to finance. As follows:
+            <br></br>
+            <ul>
+                <li>High risk: 0.125%</li>
+                <li>Moderate high risk: 0.128%</li>
+                <li>Low high risk: 0.151%</li>
+                <li>Medium risk: 0.166%</li>
+                <li>Low medium risk: 0.201%</li>
+                <li>Low risk: 0.221%</li>
+                <li>Moderate low risk: 0.244%</li>
+                <li>Lower low risk: 0.268%</li>
+            </ul>
+            <br></br>
+            In order to borrow/invest you may be required
+            to do direct deposits to our FundMe bank account
+            allowing us deduct the require fees and therefore,
+            transfer the net loan to the borrower and
+            net earnings to the investor.
+            <br></br>
+            You agree to provide current, complete, and
+            accurate bank account information during the
+            registration phase. You further agree to promptly
+            update account and payment information, including
+            email address, account number, institution number
+            and transit number, so that we can
+            process the payments and calculate the
+            net amounts.
+            All transactions shall be in Canadian dollars.
+            <br></br>
+            You agree to pay all fees as mentioned above,
+            and you authorize us to charge/deposit you
+            depending on the profile chosen and
+            type of transactions made.
+            <br></br>
+            We reserve the right to correct any errors or mistakes
+            in fees values and therefore, deductions amount.
+            We also reserve the right to refuse any transaction
+            through the App.
+        </p>
+        <h2><b>6. CANCELLATION</b></h2>
+        <p>
+            All transactions are non-refundable. You can
+            cancel a transaction at any time by clicking
+            reject button at the moment of visualizing
+            the summary of the loan proposal (borrowers)
+            or refusing to complete a deal (investors).
+        </p>
+        <h2><b>7. USER DATA</b></h2>
+        <p>
+            We will maintain certain data that you
+            transmit to the App for the purpose of
+            managing the performance of the App, as well
+            as data relating to your use of the App.
+            Although we perform regular routine backups
+            of data, you are solely responsible for all
+            data that you transmit or that related to any
+            activity you have undertaken using the App.
+            You agree that we shall have no liability to
+            you for any loss or corruption of any such data,
+            and you hereby waive any right of action against
+            us arising from any such loss or corruption
+            of such data.
+
+        </p>
+        <h2><b>8. CONTACT US</b></h2>
+        <p>
+            In order to resolve a complaint regarding the
+            App or to receive further information regarding
+            the use of the App, please contact us at:
+
+            <b>FundMe App
+            700 Royal Ave
+            New Westminster V3M 5Z5
+            Canada
+            Phone: (778) 251-8731
+            Email: fundmeapp@support.ca</b>
+        </p>
+        </string>
+    <string name="fill_borrowers_application_form">Fill Borrowers Application Form</string>
+    <string name="please_you_must_fill_all_the_questions">(Please, you must fill all the questions)</string>
+    <string name="enter_canadian_bank_account">Enter Canadian Bank Account:</string>
+    <string name="enter_borrow_amount_cad">Enter Borrow Amount (CAD):</string>
+    <string name="purpose_of_borrowing_choose_one_option_only">Purpose of Borrowing (Choose one option only):</string>
+    <string name="buy_a_good">Buy a Good</string>
+    <string name="pay_a_debt">Pay a Debt</string>
+    <string name="buy_a_house_apartment">Buy a House/Apartment</string>
+    <string name="buy_a_car">Buy a Car</string>
+    <string name="other">Other</string>
+    <string name="borrow_period">Payment Period:</string>
+    <string name="residency_status_choose_one_option_only">Residency Status (Choose one option only):</string>
+    <string name="temporary">Temporary</string>
+    <string name="permanent">Permanent</string>
+    <string name="marital_status_choose_one_option_only">Marital Status (Choose one option only):</string>
+    <string name="single">Single</string>
+    <string name="married">Married</string>
+    <string name="enter_monthly_net_income_cad">Enter Monthly Net Income (CAD):</string>
+    <string name="enter_monthly_net_spouse_income_cad">Enter Monthly Net Spouse Income (CAD):</string>
+    <string name="property_status_choose_one_option_only">Property Status (Choose one option only):</string>
+    <string name="rent">Rent</string>
+    <string name="own">Own</string>
+    <string name="enter_monthly_net_expenses_cad">Enter Monthly Net Expenses (CAD):</string>
+    <string name="agree">AGREE</string>
+    <string name="submit">SUBMIT</string>
+    <string name="go_back">GO BACK</string>
+    <string name="logo">this is the app logo</string>
+    <string name="loan_proposal_conditions">Loan Proposal Conditions</string>
+    <string name="borrow_amount">Borrow Amount:</string>
+    <string name="date_of_agreement_yy_mm_dd">Date of Agreement (YY/MM/DD)</string>
+    <string name="risk_level">Risk Level:</string>
+    <string name="interest_rate">Interest Rate (%):</string>
+    <string name="origination_fee">Origination Fee (%):</string>
+    <string name="origination_fee_amount">Origination Fee Amount:</string>
+    <string name="late_fee">Late Fee:</string>
+    <string name="agree_to_pay_late_payment_fee">Agree to pay 10% of unpaid installment amount (per unpaid installment) if incur in late payment</string>
+    <string name="unsuccessful_payment_fee">Unsuccessful payment Fee:</string>
+    <string name="agree_to_pay_unsuccessful_payment_fee">Agree to pay 50 cad every time no funds on bank account or problem to charge is identified</string>
+    <string name="monthly_installment">Monthly Installment:</string>
+    <string name="agree_with_loan_proposal_conditions">Agree with loan proposal conditions</string>
+    <string name="accept">Accept</string>
+    <string name="do_a_borrow">Do a Borrow</string>
+    <string name="do_an_investment">Do An Investment</string>
+    <string name="check_loan_details">Check Loan Details</string>
+    <string name="make_a_payment">Make A Payment</string>
+    <string name="talk_with_support">Talk With Support</string>
+    <string name="get_access_to_personal_information">Get Access To Personal Information</string>
+    <string name="check_loan_s_details">Check Loan (s) details</string>
+    <string name="loan_details_related_operations"><![CDATA[Loan Details And Related Operations]]></string>
+    <string name="original_payment_amount">Original Payment Amount:</string>
+    <string name="go_bank_app">Go Bank App</string>
+    <string name="cancel">Cancel</string>
+    <string name="check_investment_details">Check Investment Details</string>
+    <string name="remove_loan_s_details">Remove Loan (s) Details</string>
+    <string name="choose_risk_level">Choose Risk Level:</string>
+    <string name="high_risk">High Risk</string>
+    <string name="moderate_high_risk">Moderate High Risk</string>
+    <string name="low_high_risk">Low High Risk</string>
+    <string name="medium_risk">Medium Risk</string>
+    <string name="moderate_medium_risk">Moderate Medium Risk</string>
+    <string name="low_medium_risk">Low Medium Risk</string>
+    <string name="low_risk">Low Risk</string>
+    <string name="moderate_low_risk">Moderate Low Risk</string>
+    <string name="lower_low_risk">Lower Low Risk</string>
+    <string name="source_of_funds">Source of Funds</string>
+    <string name="fill_investors_application_form">FILL INVESTORS APPLICATION FORM</string>
+    <string name="enter_amount_to_pay">Enter amount to pay:</string>
+    <string name="continuex">Continue</string>
+    <string name="borrower_id">Id</string>
+    <string name="lend_amount">Lend Amount</string>
+    <string name="risk_lvl">Risk Lvl</string>
+    <string name="estimated_earning">Estimated Earning</string>
+    <string name="select_multiple">Select (Multiple)</string>
+    <string name="do_you_want_to_complete_the_deal">Do you want to complete the deal?</string>
+    <string name="total_investment_amount">Total investment amount:</string>
+    <string name="yes">Yes</string>
+    <string name="investment_details_more"><![CDATA[Investment Details And Related Operations]]></string>
+    <string name="remove_investment_s_details">Remove Investment (s) Details</string>
+    <string name="check_investment_s_details">Check Investment (s) Details</string>
+    <string name="investment_s_details">Investment(s) Details:</string>
+    <string name="investment_id">Investment Id</string>
+    <string name="accumulated_earnings">Accumulated Earnings</string>
+    <string name="profit_ratio">Profit Ratio (%)</string>
+    <string name="total_earnings_up_to_now">Total Earnings Up To Now</string>
+    <string name="total_amount_invested">Total Amount Invested:</string>
+    <string name="investment_amount">Investment Amount</string>
+    <string name="decline">DECLINE</string>
+    <string name="don_t_agree">DON\'T AGREE</string>
+    <string name="don_t_accept">DON\'T ACCEPT</string>
+    <string name="welcomeback">Welcome Back</string>
+    <string name="signinwithpass">Sign In With Password</string>
+    <string name="txtViewCreateAccount">Create Account</string>
+    <string name="txtViewName">First Name:</string>
+    <string name="editTextInputFirstName">Enter first name</string>
+    <string name="txtViewLastName">Last Name:</string>
+    <string name="editTextInputLastName"> Enter last name</string>
+    <string name="txtViewEmail">Email:</string>
+    <string name="editTextInputEmail"> Enter Email</string>
+    <string name="txtViewUsername">Username:</string>
+    <string name="editTextInputUsername"> Enter username</string>
+    <string name="txtViewPassword">Password:</string>
+    <string name="editTextInputPassword"> Enter Password</string>
+    <string name="txtViewConfirmPassword">Confirm Password:</string>
+    <string name="editTextConfirmPassword"> Re-enter password</string>
+    <string name="BtnSignup">Sign Up</string>
+    <string name="txtViewForgot">Forgot Password?</string>
+    <string name="checkBoxSignIn">Keep me Signed In</string>
+    <string name="btnLogin">Log In</string>
+    <string name="txtiewCreateAccount">Don\'t have an account?</string>
+    <string name="txtViewSignup">Sign-up here</string>
+    <string name="enter_your_username">Enter your username:</string>
+    <string name="username">Username</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="password">Password</string>
+
+</resources>

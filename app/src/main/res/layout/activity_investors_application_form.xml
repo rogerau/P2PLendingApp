@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    android:orientation="vertical"
+    tools:context=".Investor.InvestorsApplicationForm">
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:contentDescription="@string/logo"
+        android:padding="10dp"
+        android:src="@drawable/fundmelogo" />
+
+    <TextView
+        android:id="@+id/titleIAppForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/fill_investors_application_form"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/titleISugAppForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/please_you_must_fill_all_the_questions"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/generalContainerIAppForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/cBankAccContainerIAppForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cBankAccIAppFormTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:labelFor="@id/cBankAccIAppFormEt"
+                    android:padding="5dp"
+                    android:text="@string/enter_canadian_bank_account"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/cBankAccIAppFormEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:inputType="text"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sFundsContainerIAppForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sFundsIAppFormTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:labelFor="@id/borrowAAppFormEt"
+                    android:padding="5dp"
+                    android:text="@string/source_of_funds"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/sFundsIAppFormEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:inputType="textMultiLine"
+                    android:padding="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/cRLIAppForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/cRLIHeaderAppForm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_risk_level"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/highRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/high_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/moHighRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moderate_high_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/lHighRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/low_high_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/mediumRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medium_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/moMediumRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moderate_medium_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/lMediumRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/low_medium_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/lowRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/low_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/moLowRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/moderate_low_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/lLowRiskIAppForm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lower_low_risk"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/submitButtonsContainerIAppForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/submitIAppFormButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/submit" />
+
+                <Button
+                    android:id="@+id/declineIAppFormButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/go_back" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

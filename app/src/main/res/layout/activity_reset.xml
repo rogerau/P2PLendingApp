@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#0000FF"
+    android:padding="10dp"
+    tools:context=".Login.ResetActivity">
+
+    <TextView
+        android:id="@+id/usernameResetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/reset_password"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/password_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameResetText"
+        android:layout_marginTop="50dp"
+        android:hint="@string/password"
+        android:minHeight="48dp"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/repassword_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password_reset"
+        android:layout_marginTop="50dp"
+        android:hint="@string/re_type_password"
+        android:minHeight="48dp"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/repassword_reset"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/confirm"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>

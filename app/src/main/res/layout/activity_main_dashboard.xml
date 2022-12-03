@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    tools:context=".Borrower.MainDashboard">
+
+
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/fundmelogo"
+        app:layout_constraintBottom_toTopOf="@id/doABorrowMDBt"
+        app:layout_constraintEnd_toEndOf="@id/doABorrowMDBt"
+        app:layout_constraintStart_toStartOf="@id/doABorrowMDBt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/doABorrowMDBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/do_a_borrow"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/checkLoanDetailsMDBt"
+        app:layout_constraintEnd_toEndOf="@id/checkLoanDetailsMDBt"
+        app:layout_constraintStart_toStartOf="@id/checkLoanDetailsMDBt"
+        app:layout_constraintTop_toBottomOf="@id/appLogo" />
+
+    <Button
+        android:id="@+id/checkLoanDetailsMDBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/check_loan_details"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/talkWSupportMDBt"
+        app:layout_constraintEnd_toEndOf="@id/talkWSupportMDBt"
+        app:layout_constraintStart_toStartOf="@id/talkWSupportMDBt"
+        app:layout_constraintTop_toBottomOf="@id/doABorrowMDBt" />
+
+    <Button
+        android:id="@+id/talkWSupportMDBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/talk_with_support"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/getAccessPersonalInfoMDBt"
+        app:layout_constraintEnd_toEndOf="@id/getAccessPersonalInfoMDBt"
+        app:layout_constraintStart_toStartOf="@id/getAccessPersonalInfoMDBt"
+        app:layout_constraintTop_toBottomOf="@id/checkLoanDetailsMDBt" />
+
+    <Button
+        android:id="@+id/getAccessPersonalInfoMDBt"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/get_access_to_personal_information"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/talkWSupportMDBt" />
+</androidx.constraintlayout.widget.ConstraintLayout>
