@@ -112,6 +112,24 @@
             tools:ignore="SpeakableTextPresentCheck,TextContrastCheck" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/inputDOB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="24dp"
+            android:hint="@string/choose_date_of_birth"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:minHeight="48dp"/>
+
+        <TextView
             android:id="@+id/txtViewPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

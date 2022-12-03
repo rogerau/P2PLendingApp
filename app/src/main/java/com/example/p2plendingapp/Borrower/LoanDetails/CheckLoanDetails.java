@@ -16,6 +16,7 @@ import com.example.p2plendingapp.Borrower.MainDashboard;
 import com.example.p2plendingapp.R;
 
 import java.lang.reflect.Array;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class CheckLoanDetails extends AppCompatActivity implements View.OnClickListener {
@@ -47,11 +48,11 @@ public class CheckLoanDetails extends AppCompatActivity implements View.OnClickL
 //        loadPreferences();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        savedPreferences();
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+////        savedPreferences();
+//    }
 
     public void savedPreferences() {
         sData = getPreferences(Context.MODE_PRIVATE);

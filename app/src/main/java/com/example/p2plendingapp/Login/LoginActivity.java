@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.p2plendingapp.Borrower.MainDashboard;
 import com.example.p2plendingapp.Database.DBHelper;
+import com.example.p2plendingapp.Database.p2pLendingDB;
 import com.example.p2plendingapp.General.ProfileSelection;
 import com.example.p2plendingapp.R;
 
@@ -23,8 +27,10 @@ public class LoginActivity extends AppCompatActivity {
     TextView signup, forgot;
     Button login;
     DBHelper DB;
+    //    p2pLendingDB DB;
     CheckBox checkBox;
     boolean isChecked;
+    boolean passwordVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         forgot = findViewById(R.id.textViewForgot);
         isChecked = false;
         DB = new DBHelper(this);
+//        DB = new p2pLendingDB(this);
 
         //store state of checkbox in shared preferences
         checkBox.setOnCheckedChangeListener(((compoundButton, b) -> {
@@ -90,6 +97,31 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(getApplicationContext(), ForgotPasswordActivity.class);
                     startActivity(intent);
+                }
+            });
+
+            password.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                    final int Right = 2;
+                    if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                        if (motionEvent.getRawX() >= password.getRight() - password.getCompoundDrawables()[Right].getBounds().width()) {
+                            int selection = password.getSelectionEnd();
+                            if (passwordVisible) {
+                                password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
+                                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisible = false;
+                            } else {
+                                password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
+                                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisible = true;
+                            }
+                            password.setSelection(selection);
+                            return true;
+                        }
+                    }
+                    return false;
                 }
             });
         }

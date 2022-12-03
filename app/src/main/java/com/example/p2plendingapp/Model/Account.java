@@ -2,7 +2,7 @@ package com.example.p2plendingapp.Model;
 
 public class Account {
 
-    //    private Integer accId;
+//    private Integer accId;
     private String username, password, email;
 
     public Account() {

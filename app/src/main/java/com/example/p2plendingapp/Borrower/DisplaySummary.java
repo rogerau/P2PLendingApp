@@ -1,11 +1,8 @@
 package com.example.p2plendingapp.Borrower;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +15,7 @@ import com.example.p2plendingapp.Database.p2pLendingDB;
 import com.example.p2plendingapp.Model.Loan;
 import com.example.p2plendingapp.R;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +37,8 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
     String riskLvl;
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
     Date date = new Date();
+    NumberFormat percentage = NumberFormat.getPercentInstance();
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,11 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         db = new p2pLendingDB(this);
         aLoan = new Loan();
 
-        //Display data sent from the borrower application form
+        //Get data from the borrower application form
+        getDataFromBaPPForm();
+        //Send data into the loan object and store the data into the loan table
+        storeLoanDataIntoLoanTable();
+        //Once sent and stored, display data in the form
         displayDataFromBAppForm();
 
     }
@@ -83,20 +87,17 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
     }
 
     public void displayDataFromBAppForm() {
-        //Get data from borrowers application form
-        getDataFromBaPPForm();
         //Set all values to the correct views
         riskLvlDisSumResult.setText(riskLvl);
-        borrowPDisSumResult.setText(String.valueOf(bPeriod));
-        borrowADisSumResult.setText(String.valueOf(bAmount));
+        borrowPDisSumResult.setText(String.valueOf(bPeriod) + " months");
+        borrowADisSumResult.setText(currency.format(bAmount));
         dateAgreeDisSumResult.setText(formatter.format(date));
-        interestRADisSumResult.setText(String.valueOf(aLoan.getiRate()));
-        oFeeDisSumResult.setText(String.valueOf(aLoan.getoFee()));
-        oFeeADisSumResult.setText(String.valueOf(aLoan.getoFeeAmount()));
-        mInstallmentDisSumResult.setText(String.valueOf(aLoan.getmPAmount()));
+        interestRADisSumResult.setText(percentage.format(aLoan.getiRate()));
+        oFeeDisSumResult.setText(percentage.format(aLoan.getoFee()));
+        oFeeADisSumResult.setText(currency.format(aLoan.getoFeeAmount()));
+        mInstallmentDisSumResult.setText(currency.format(aLoan.getmPAmount()));
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void openCheckLoanDetails() {
         sIntent = new Intent(this, CheckLoanDetails.class);
         //Send data to the check loan details activity
@@ -108,7 +109,30 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         sIntent.putExtra("amount_left", 0);
         //Send the payment schedule as string array plus status as string array too
         ArrayList<String> paymentScheduleList = new ArrayList<>();
+        paymentScheduleList.add("2023/01/03");
+        paymentScheduleList.add("2023/02/03");
+        paymentScheduleList.add("2023/03/03");
+        paymentScheduleList.add("2023/05/03");
+        paymentScheduleList.add("2023/06/03");
+        paymentScheduleList.add("2023/07/03");
+        paymentScheduleList.add("2023/08/03");
+        paymentScheduleList.add("2023/09/03");
+        paymentScheduleList.add("2023/10/03");
+        paymentScheduleList.add("2023/11/03");
+        paymentScheduleList.add("2023/12/03");
         ArrayList<String> statusArray = new ArrayList<>();
+        statusArray.add("paid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
+        statusArray.add("unpaid");
         sIntent.putStringArrayListExtra("payment_schedule", paymentScheduleList);
         sIntent.putStringArrayListExtra("payment_status", statusArray);
         startActivity(sIntent);
@@ -132,10 +156,10 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         aLoan.setiRate(bAmount, bPeriod, riskLvl);
         aLoan.setuPFee();
         aLoan.setlPFee();
-        aLoan.setmPAmount(bAmount);
         aLoan.setaTerms(aTerms);
         aLoan.setlAmount(bAmount);
         aLoan.setpPeriod(bPeriod);
+        aLoan.setmPAmount(bAmount);
         aLoan.setsDOAgreement(formatter.format(date));
         aLoan.setcId(cId);
         //Insert the data into the Loan table
@@ -143,7 +167,6 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         Toast.makeText(this, numInserted + " row(s) were inserted!", Toast.LENGTH_SHORT).show();
     }
 
-    @SuppressLint("NewApi")
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.acceptDisSumButton) {

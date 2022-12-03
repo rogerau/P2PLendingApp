@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.p2plendingapp.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DetailsFragment extends Fragment {
@@ -24,6 +25,7 @@ public class DetailsFragment extends Fragment {
     Context thisContext;
     double bAmount, pAmount, aLeft;
     ArrayList<String> datesLeft = new ArrayList<>(), pStatus = new ArrayList<>();
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     public DetailsFragment(double bAmount, double pAmount, double aLeft, ArrayList<String> datesLeft, ArrayList<String> pStatus) {
         this.bAmount = bAmount;
@@ -55,9 +57,9 @@ public class DetailsFragment extends Fragment {
         datesLeftLoanDResult = (TextView) view.findViewById(R.id.datesLeftLoanDResult);
         pStatusLoanDResult = (TextView) view.findViewById(R.id.pStatusLoanDResult);
 
-        originalLALoanDResult.setText(String.valueOf(bAmount));
-        tAmountPaidLoanDResult.setText(String.valueOf(pAmount));
-        tAmountLeftLoanDResult.setText(String.valueOf(aLeft));
+        originalLALoanDResult.setText(currency.format(bAmount));
+        tAmountPaidLoanDResult.setText(currency.format(pAmount));
+        tAmountLeftLoanDResult.setText(currency.format(aLeft));
         for (int i = 0; i < datesLeft.size(); i++) {
             datesLeftLoanDResult.setText(datesLeft.get(i) + "\n");
         }
