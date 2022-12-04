@@ -12,10 +12,15 @@ import com.example.p2plendingapp.General.AgreeGeneralForm;
 import com.example.p2plendingapp.R;
 import com.example.p2plendingapp.Support.EmailSupport;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class MainDashboard extends AppCompatActivity implements View.OnClickListener {
 
     Button doABorrowMDBt, checkLoanDetailsMDBt, talkWSupportMDBt, getAccessPersonalInfoMDBt;
-    Intent sIntent;
+    Intent sIntent, lIntent;
+    double bAmount, pAmount, aLeft;
+    ArrayList<String> pStatus, datesLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class MainDashboard extends AppCompatActivity implements View.OnClickList
         talkWSupportMDBt.setOnClickListener(this);
         getAccessPersonalInfoMDBt.setOnClickListener(this);
 
+
     }
 
     @Override
@@ -46,6 +52,11 @@ public class MainDashboard extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        receiveDataFromOpenCheckLoanDetails();
+    }
 
     public void openTalkWithSupport() {
         sIntent = new Intent(this, EmailSupport.class);
@@ -55,6 +66,12 @@ public class MainDashboard extends AppCompatActivity implements View.OnClickList
 
     public void openCheckLoanDetails() {
         sIntent = new Intent(this, CheckLoanDetails.class);
+        //Send the data that came back from CheckLoanDetails
+        sIntent.putExtra("borrow_amount", bAmount);
+        sIntent.putExtra("payment_amount", pAmount);
+        sIntent.putExtra("amount_left", aLeft);
+        sIntent.putStringArrayListExtra("payment_schedule", datesLeft);
+        sIntent.putStringArrayListExtra("payment_status", pStatus);
         startActivity(sIntent);
     }
 
@@ -62,5 +79,15 @@ public class MainDashboard extends AppCompatActivity implements View.OnClickList
         sIntent = new Intent(this, AgreeGeneralForm.class);
         sIntent.putExtra("redirect to", "borrower");
         startActivity(sIntent);
+    }
+
+    public void receiveDataFromOpenCheckLoanDetails() {
+        lIntent = getIntent();
+        bAmount = lIntent.getDoubleExtra("borrow_amount", 0);
+        pAmount = lIntent.getDoubleExtra("payment_amount", 0);
+        aLeft = lIntent.getDoubleExtra("amount_left", 0);
+        datesLeft = lIntent.getStringArrayListExtra("payment_schedule");
+        pStatus = lIntent.getStringArrayListExtra("payment_status");
+
     }
 }

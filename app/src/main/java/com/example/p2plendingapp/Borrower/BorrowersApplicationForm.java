@@ -25,6 +25,7 @@ public class BorrowersApplicationForm extends AppCompatActivity implements View.
     int randomCId, resStatusId, mStatusId, pStatusId, pOfBorrowingId;
     double borrowA;
     String cBankAcc;
+    Boolean agreedTerms;
 
 
     @Override
@@ -54,22 +55,27 @@ public class BorrowersApplicationForm extends AppCompatActivity implements View.
         db = new p2pLendingDB(this);
         aBorrower = new Borrower();
 
+        //Get data from the agreement form
+        getDataFromAgreementForm();
+
+    }
+
+
+    public void getDataFromAgreementForm() {
+        lIntent = getIntent();
+        //Receive the agreedTerms from agree general conditions activity
+        agreedTerms = lIntent.getBooleanExtra("Agreed Terms", true);
+        //Receive the customerId from agree general conditions activity
     }
 
     public void displayLoanSummary() {
-        lIntent = getIntent();
-        //Receive the agreedTerms from agree general conditions activity
-        Boolean agreedTerms = lIntent.getBooleanExtra("Agreed Terms", true);
-
-        //Receive the customerId from agree general conditions activity
-
         sIntent = new Intent(this, DisplaySummary.class);
 
         //Continue passing the agreedTerms into the display summary activity
         sIntent.putExtra("agreed_terms", agreedTerms);
 
         //Continue passing the customerId into the display summary activity
-        //Generate a random integer 4 digits as a lId from 1000 to 9999 (temporal)
+        //Generate a random integer 4 digits as a bId from 1000 to 9999 (temporal)
         int min = 1000;
         int max = 9999;
         randomCId = (int) Math.floor(Math.random() * (max - min + 1) + min);
@@ -80,7 +86,11 @@ public class BorrowersApplicationForm extends AppCompatActivity implements View.
         if (cBankAcc.isEmpty()) {
             Toast.makeText(this, "Please, insert a canadian bank account", Toast.LENGTH_SHORT).show();
         } else {
-            borrowA = Double.parseDouble(borrowAAppFormEt.getText().toString());
+            if (borrowAAppFormEt.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Please, insert a borrow amount", Toast.LENGTH_SHORT).show();
+            } else {
+                borrowA = Double.parseDouble(borrowAAppFormEt.getText().toString());
+            }
             if (borrowA > 25000 || borrowA < 1000) {
                 Toast.makeText(this, "Please, insert a borrow amount greater that or equal to $1000 and lower than or equal to $25000", Toast.LENGTH_SHORT).show();
             } else {
@@ -130,10 +140,10 @@ public class BorrowersApplicationForm extends AppCompatActivity implements View.
                                                     sIntent.putExtra("purpose_borrowing", "other");
                                                 }
                                                 sIntent.putExtra("borrow_period", Integer.parseInt(borrowPAPPFormEt.getText().toString()));
-                                                sIntent.putExtra("risk_lvl", aBorrower.setRiskLvl());
-                                                startActivity(sIntent);
                                                 //Store borrower data into the borrower table
                                                 storeBorrowerDataIntoBorrowerTable();
+                                                sIntent.putExtra("risk_lvl", aBorrower.setRiskLvl());
+                                                startActivity(sIntent);
                                             }
                                         }
                                     }
@@ -153,7 +163,6 @@ public class BorrowersApplicationForm extends AppCompatActivity implements View.
     }
 
     public void storeBorrowerDataIntoBorrowerTable() {
-        //Here you must store the cId into the borrower table.
         aBorrower.setbId(randomCId);
         aBorrower.setHmExp(Double.parseDouble(expensesAppFormEt.getText().toString()));
         aBorrower.setmNetIncome(Double.parseDouble(netIncomeAppFormEt.getText().toString()));

@@ -307,5 +307,7 @@
     <string name="password">Password</string>
     <string name="date_of_birth">Date of Birth:</string>
     <string name="choose_date_of_birth">Choose Date of Birth</string>
+    <string name="payment_schedule">Payment Schedule:</string>
+    <string name="total_amount_paid">Total Amount Paid:</string>
 
 </resources>

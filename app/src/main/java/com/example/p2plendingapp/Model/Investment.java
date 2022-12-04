@@ -1,8 +1,8 @@
 package com.example.p2plendingapp.Model;
 
-public class Investment  {
+public class Investment {
 
-    private Integer iId;
+    private int iId;
     private double sFee;
     private double mEarnings;
     private Boolean aDeal;
@@ -14,38 +14,62 @@ public class Investment  {
 
     }
 
-    public Investment(Integer iId, double sFee, double mEarnings, Boolean aDeal,Boolean aTerms, double tLAmount,Integer cId) {
+    public Investment(int iId, String pRL, Boolean aDeal, Boolean aTerms, double tLAmount, int cId) {
         this.iId = iId;
-        this.sFee = sFee;
-        this.mEarnings = mEarnings;
+        this.sFee = setsFee(pRL);
+        this.mEarnings = setmEarnings();
         this.aDeal = aDeal;
         this.aTerms = aTerms;
         this.tLAmount = tLAmount;
         this.cId = cId;
     }
 
-    public Integer getiId() {
+    public int getiId() {
         return iId;
     }
 
-    public void setiId(Integer iId) {
+    public void setiId(int iId) {
         this.iId = iId;
+    }
+
+    public Integer getcId() {
+        return cId;
     }
 
     public double getsFee() {
         return sFee;
     }
 
-    public void setsFee(double sFee) {
-        this.sFee = sFee;
+    public double setsFee(String pRLevel) {
+        double sFee;
+        if (pRLevel.equals("High Risk")) {
+            sFee = 0.0125;
+        } else if (pRLevel.equals("Moderate high risk")) {
+            sFee = 0.0138;
+        } else if (pRLevel.equals("Low high risk")) {
+            sFee = 0.0151;
+        } else if (pRLevel.equals("Medium risk")) {
+            sFee = 0.0166;
+        } else if (pRLevel.equals("Moderate medium risk")) {
+            sFee = 0.0183;
+        } else if (pRLevel.equals("Low medium risk")) {
+            sFee = 0.0201;
+        } else if (pRLevel.equals("Low risk")) {
+            sFee = 0.0221;
+        } else if (pRLevel.equals("Moderate low risk")) {
+            sFee = 0.0244;
+        } else {
+            sFee = 0.0268;
+        }
+        return sFee;
     }
 
     public double getmEarnings() {
         return mEarnings;
     }
 
-    public void setmEarnings(double mEarnings) {
-        this.mEarnings = mEarnings;
+    public double setmEarnings() {
+        return mEarnings * (1 - this.mEarnings * this.sFee);
     }
 
     public Boolean getaDeal() {
@@ -70,5 +94,9 @@ public class Investment  {
 
     public void settLAmount(double tLAmount) {
         this.tLAmount = tLAmount;
+    }
+
+    public void setcId(Integer cId) {
+        this.cId = cId;
     }
 }

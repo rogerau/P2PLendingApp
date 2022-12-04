@@ -2,25 +2,27 @@ package com.example.p2plendingapp.Model;
 
 public class Transaction {
 
-    private Integer tId;
+    private int tId;
     private String tDesc;
 
     public Transaction() {
 
     }
 
-    public Transaction(Integer tId, String tDesc) {
+    public Transaction(int tId, String tDesc) {
+
         this.tId = tId;
         this.tDesc = tDesc;
     }
 
-    public Integer gettId() {
+    public int gettId() {
         return tId;
     }
 
-    public void settId(Integer tId) {
+    public void settId(int tId) {
         this.tId = tId;
     }
+
 
     public String gettDesc() {
         return tDesc;

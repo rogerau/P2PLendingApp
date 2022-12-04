@@ -1,10 +1,7 @@
 package com.example.p2plendingapp.Model;
 
-import com.example.p2plendingapp.Investor.MarketPlace_Java.MarketPlaceAccess;
-
 public class Loan {
-
-    private Integer lId;
+    private int lId;
     private String pOBorrowing;
     private double oFee;
     private double iRate;
@@ -21,8 +18,8 @@ public class Loan {
 
     }
 
-    public Loan(Integer lId, String pOBorrowing, double oFee, double uPFee, double lPFee, double mPAmount,
-                Boolean aTerms, double lAmount, Integer pPeriod, String sDOAgreement, Integer cId) {
+    public Loan(int lId, String pOBorrowing, double oFee, double uPFee, double lPFee, double mPAmount,
+                Boolean aTerms, double lAmount, Integer pPeriod, String sDOAgreement, int cId) {
         this.lId = lId;
         this.pOBorrowing = pOBorrowing;
         this.oFee = oFee;
@@ -36,20 +33,20 @@ public class Loan {
         this.cId = cId;
     }
 
+    public int getlId() {
+        return lId;
+    }
+
+    public void setlId(int lId) {
+        this.lId = lId;
+    }
+
     public void setcId(Integer cId) {
         this.cId = cId;
     }
 
     public Integer getcId() {
         return cId;
-    }
-
-    public Integer getlId() {
-        return lId;
-    }
-
-    public void setlId(Integer lId) {
-        this.lId = lId;
     }
 
     public String getpOBorrowing() {
@@ -81,23 +78,23 @@ public class Loan {
 
     public void setiRate(double lAmount, double pPeriod, String riskLvl) {
         //Max annual interest rate in Canada 60%
-        //Get the equivalent monthly according to loan amount and payment period
+        //Get the equivalent monthly according to loan amount, risk level and payment period
         //If loan amount is between 1000 and 5000, and the loan period is greater than
         //12 months assign 60% annual (high risk), 55% annual (medium risk) and 45% (lower risk) , otherwise
         //40% annual (high risk), 35% annual (medium risk) and 25% (lower risk).
         if (lAmount >= 1000 && lAmount < 5000) {
             if (pPeriod >= 12) {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.60 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.55 / 12;
                 } else {
                     this.iRate = 0.45 / 12;
                 }
             } else {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.40 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.35 / 12;
                 } else {
                     this.iRate = 0.25 / 12;
@@ -108,17 +105,17 @@ public class Loan {
             //30% annual (high risk), 25% annual (medium risk) and 15% (lower risk).
         } else if (lAmount >= 5000 && lAmount < 15000) {
             if (pPeriod >= 12) {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.50 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.45 / 12;
                 } else {
                     this.iRate = 0.35 / 12;
                 }
             } else {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.30 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.25 / 12;
                 } else {
                     this.iRate = 0.15 / 12;
@@ -129,17 +126,17 @@ public class Loan {
             //20% annual (high risk), 15% annual (medium risk) and 5% (lower risk).
         } else {
             if (pPeriod >= 12) {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.40 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.35 / 12;
                 } else {
                     this.iRate = 0.25 / 12;
                 }
             } else {
-                if ((riskLvl == "High risk" || riskLvl == "Moderate high risk" || riskLvl == "Low high risk")) {
+                if ((riskLvl.equals("High risk") || riskLvl.equals("Moderate high risk") || riskLvl.equals("Low high risk"))) {
                     this.iRate = 0.20 / 12;
-                } else if ((riskLvl == "Medium risk" || riskLvl == "Moderate medium risk" || riskLvl == "Low medium risk")) {
+                } else if ((riskLvl.equals("Medium risk") || riskLvl.equals("Moderate medium risk") || riskLvl.equals("Low medium risk"))) {
                     this.iRate = 0.15 / 12;
                 } else {
                     this.iRate = 0.05 / 12;

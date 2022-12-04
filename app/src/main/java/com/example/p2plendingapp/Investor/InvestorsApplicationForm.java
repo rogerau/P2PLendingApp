@@ -23,8 +23,9 @@ public class InvestorsApplicationForm extends AppCompatActivity implements View.
     Investor anInvestor;
     RadioGroup cRLIAppForm;
     EditText cBankAccIAppFormEt, sFundsIAppFormEt;
-    int randomCId, pRiskLevelId;
+    int pRiskLevelId, randomCId;
     String canadianBankAcc, sOFunds;
+    Boolean agreedTerms;
 
 
     @Override
@@ -44,27 +45,25 @@ public class InvestorsApplicationForm extends AppCompatActivity implements View.
 
         db = new p2pLendingDB(this);
         anInvestor = new Investor();
+
+        //Get data from the agreement terms
+        getDataFromAgreeTerms();
+    }
+
+    public void getDataFromAgreeTerms() {
+        lIntent = getIntent();
+        //Receive the agreedTerms from agree general conditions activity
+        agreedTerms = lIntent.getBooleanExtra("Agreed Terms", true);
     }
 
     public void exploreMarketPlace() {
-        lIntent = getIntent();
-        //Receive the agreedTerms from agree general conditions activity
-        Boolean agreedTerms = lIntent.getBooleanExtra("Agreed Terms", true);
-
-        //Receive the customerId from agree general conditions activity
-
         sIntent = new Intent(this, MarketPlaceAccess.class);
-
-        //Continue passing the agreedTerms into the MarketPlaceAccess activity
-        sIntent.putExtra("agreed_terms", agreedTerms);
-
-        //Continue passing the customerId into the MarketPlaceAccess activity
-        //Generate a random integer 4 digits as a lId from 1000 to 9999 (temporal)
+        //Generate a random integer 4 digits as a inId from 1000 to 9999 (temporal)
         int min = 1000;
         int max = 9999;
         randomCId = (int) Math.floor(Math.random() * (max - min + 1) + min);
         sIntent.putExtra("customer_id", randomCId);
-
+        sIntent.putExtra("agreed_terms", agreedTerms);
         //Validate inputs
         canadianBankAcc = cBankAccIAppFormEt.getText().toString();
         if (canadianBankAcc.isEmpty()) {
@@ -81,23 +80,23 @@ public class InvestorsApplicationForm extends AppCompatActivity implements View.
                 } else {
                     //Pass the following data to the MarketPlaceAccess activity
                     if (pRiskLevelId == R.id.highRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.high_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.high_risk));
                     } else if (pRiskLevelId == R.id.moHighRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.moderate_high_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.moderate_high_risk));
                     } else if (pRiskLevelId == R.id.lHighRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.low_high_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.low_high_risk));
                     } else if (pRiskLevelId == R.id.mediumRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.medium_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.medium_risk));
                     } else if (pRiskLevelId == R.id.moMediumRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.moderate_medium_risk);
+                        sIntent.putExtra("preferred_risk_lvl",String.valueOf(R.string.moderate_medium_risk));
                     } else if (pRiskLevelId == R.id.lMediumRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.low_medium_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.low_medium_risk));
                     } else if (pRiskLevelId == R.id.lowRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.low_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.low_risk));
                     } else if (pRiskLevelId == R.id.moLowRiskIAppForm) {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.moderate_low_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.moderate_low_risk));
                     } else {
-                        sIntent.putExtra("preferred_risk_lvl", R.string.lower_low_risk);
+                        sIntent.putExtra("preferred_risk_lvl", String.valueOf(R.string.lower_low_risk));
                     }
                     startActivity(sIntent);
                     //Store investor data into the investor table
@@ -113,7 +112,6 @@ public class InvestorsApplicationForm extends AppCompatActivity implements View.
         //Here you must store the cId into the investor table.
         anInvestor.setInId(randomCId);
         anInvestor.setsOFunds(sOFunds);
-        anInvestor.setcBAccount(canadianBankAcc);
         //Get the id of every radio button inside residency status radio group
         //Assign the respective value to the Borrower object
         if (pRiskLevelId == R.id.highRiskIAppForm) {
@@ -135,7 +133,7 @@ public class InvestorsApplicationForm extends AppCompatActivity implements View.
         } else {
             anInvestor.setpRLevel(String.valueOf(R.string.lower_low_risk));
         }
-
+        anInvestor.setcBAccount(canadianBankAcc);
         //Insert the data into the Investors table
         long numInserted = db.insertIntoInvestorTb(anInvestor);
         Toast.makeText(this, numInserted + " row(s) were inserted!", Toast.LENGTH_SHORT).show();

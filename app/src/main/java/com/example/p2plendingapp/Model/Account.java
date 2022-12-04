@@ -2,27 +2,27 @@ package com.example.p2plendingapp.Model;
 
 public class Account {
 
-//    private Integer accId;
+    private int accId;
     private String username, password, email;
 
     public Account() {
 
     }
 
-    public Account(String username, String password, String email) {
-//        this.accId = accId;
+    public Account(int accId, String username, String password, String email) {
+        this.accId = accId;
         this.username = username;
         this.password = password;
         this.email = email;
     }
 
-//    public Integer getAccId() {
-//        return accId;
-//    }
-//
-//    public void setAccId(Integer accId) {
-//        this.accId = accId;
-//    }
+    public int getAccId() {
+        return accId;
+    }
+
+    public void setAccId(int accId) {
+        this.accId = accId;
+    }
 
     public String getUsername() {
         return username;

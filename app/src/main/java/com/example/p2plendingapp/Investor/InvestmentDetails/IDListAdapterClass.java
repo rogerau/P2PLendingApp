@@ -10,11 +10,14 @@ import android.widget.TextView;
 import com.example.p2plendingapp.Model.InvestmentDetails;
 import com.example.p2plendingapp.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class IDListAdapterClass extends ArrayAdapter<InvestmentDetails> {
 
-    TextView investmentId,iAmount, aEarnings, profitRatio;
+    TextView investmentId, iAmount, aEarnings, profitRatio;
+    NumberFormat percentage = NumberFormat.getPercentInstance();
+    NumberFormat currency = NumberFormat.getCurrencyInstance();
 
     public IDListAdapterClass(Context context, ArrayList<InvestmentDetails> investmentDetails) {
         super(context, 0, investmentDetails);
@@ -30,14 +33,14 @@ public class IDListAdapterClass extends ArrayAdapter<InvestmentDetails> {
         }
         // Lookup view for data population
         investmentId = (TextView) convertView.findViewById(R.id.investmentId);
-        iAmount = (TextView) convertView.findViewById(R.id.iAmount) ;
+        iAmount = (TextView) convertView.findViewById(R.id.iAmount);
         aEarnings = (TextView) convertView.findViewById(R.id.aEarnings);
         profitRatio = (TextView) convertView.findViewById(R.id.profitRatio);
         // Populate the data into the template view using the data object
         investmentId.setText(String.valueOf(investmentDetails.getInvestmentId()));
-        iAmount.setText(String.valueOf(investmentDetails.getInvestmentA()));
-        aEarnings.setText(String.valueOf(investmentDetails.calEarningsAcc()));
-        profitRatio.setText(String.valueOf(investmentDetails.calProfitRatio()));
+        iAmount.setText(currency.format(investmentDetails.getInvestmentA()));
+        aEarnings.setText(currency.format(investmentDetails.calEarningsAcc()));
+        profitRatio.setText(percentage.format(investmentDetails.calProfitRatio()));
         // Return the completed view to render on screen
         return convertView;
     }

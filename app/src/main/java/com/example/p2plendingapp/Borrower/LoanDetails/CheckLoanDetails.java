@@ -27,8 +27,6 @@ public class CheckLoanDetails extends AppCompatActivity implements View.OnClickL
     FragmentTransaction transaction;
     double bAmount, pAmount, aLeft;
     ArrayList<String> datesLeft = new ArrayList<>(), pStatus = new ArrayList<>();
-    SharedPreferences sData, lData;
-    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,43 +42,8 @@ public class CheckLoanDetails extends AppCompatActivity implements View.OnClickL
         //Get data from display summary activity
         getDataFromDisplaySummaryActivity();
 
-        //Load Preferences
-//        loadPreferences();
     }
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-////        savedPreferences();
-//    }
-
-    public void savedPreferences() {
-        sData = getPreferences(Context.MODE_PRIVATE);
-        editor = sData.edit();
-        //Save data
-        editor.putFloat("borrow_amount", (float) bAmount);
-        editor.putFloat("payment_amount", (float) pAmount);
-        for (int i = 0; i < datesLeft.size(); i++) {
-            editor.putString(i + " payment_schedule", datesLeft.get(i));
-        }
-
-        for (int i = 0; i < pStatus.size(); i++) {
-            editor.putString(i + " payment_status", pStatus.get(i));
-        }
-        editor.apply();
-    }
-
-    public void loadPreferences() {
-        lData = getPreferences(Context.MODE_PRIVATE);
-        for (int i = 0; i < datesLeft.size(); i++) {
-            datesLeft.add(lData.getString(i + " payment_schedule", ""));
-        }
-        for (int i = 0; i < pStatus.size(); i++) {
-            pStatus.add(lData.getString(i + " payment_status", ""));
-        }
-        bAmount = lData.getFloat("borrow_amount", (float) bAmount);
-        pAmount = lData.getFloat("payment_amount", (float) pAmount);
-    }
 
     public void getDataFromDisplaySummaryActivity() {
         lIntent = getIntent();
@@ -122,6 +85,12 @@ public class CheckLoanDetails extends AppCompatActivity implements View.OnClickL
 
     public void returnToMainDashBoard() {
         sIntent = new Intent(this, MainDashboard.class);
+        //Send data to the main dashboard
+        sIntent.putExtra("borrow_amount", bAmount);
+        sIntent.putExtra("payment_amount", pAmount);
+        sIntent.putExtra("amount_left", aLeft);
+        sIntent.putStringArrayListExtra("payment_schedule", datesLeft);
+        sIntent.putStringArrayListExtra("payment_status", pStatus);
         startActivity(sIntent);
     }
 }

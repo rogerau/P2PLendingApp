@@ -12,8 +12,11 @@ import androidx.annotation.Nullable;
 import com.example.p2plendingapp.Model.Account;
 import com.example.p2plendingapp.Model.Borrower;
 import com.example.p2plendingapp.Model.Customer;
+import com.example.p2plendingapp.Model.Investment;
 import com.example.p2plendingapp.Model.Investor;
 import com.example.p2plendingapp.Model.Loan;
+
+import java.util.ArrayList;
 
 public class p2pLendingDB extends SQLiteOpenHelper {
 
@@ -23,11 +26,16 @@ public class p2pLendingDB extends SQLiteOpenHelper {
 
     //Account table details
     protected final String accountTB = "Account";
-    protected final String aId = "AccountId";
+    protected final String accId = "AccountId";
     protected final String userName = "Username";
     protected final String password = "Password";
     protected final String eMail = "Email";
-    protected final String acId = "CustomerId";
+
+    //Admin table details
+    protected final String adminTB = "Admin";
+    protected final String aId = "AdminId";
+    protected final String aUserName = "AdminUsername";
+    protected final String aPassword = "AdminPassword";
 
     //Borrower table details
     protected final String borrowerTB = "Borrower";
@@ -81,6 +89,12 @@ public class p2pLendingDB extends SQLiteOpenHelper {
     protected final String tId = "TransactionId";
     protected final String tDesc = "TransactionDesc";
 
+    //Admin do a transaction table details
+    protected final String aDTransactionTB = "AdminTransaction";
+
+    //Customer do a transaction table details
+    protected final String cDTransactionTB = "CustomerTransaction";
+
     String[] tableNameArray;
     protected SQLiteDatabase myDb;
     protected long numRecordsInserted;
@@ -96,12 +110,14 @@ public class p2pLendingDB extends SQLiteOpenHelper {
 
         String accountTBCreate = "create table "
                 + accountTB + " ("
-                + aId + " integer primary key, "
+                + accId + " integer primary key, "
                 + userName + " text not null, "
                 + password + " text not null, "
                 + eMail + " text not null, "
-                + acId + " integer not null, "
-                + " FOREIGN KEY (" + acId + ") REFERENCES " + customerTB + "(" + cId + "));";
+                + cId + " integer not null, "
+                + aId + " integer not null, "
+                + " FOREIGN KEY (" + cId + ") REFERENCES " + customerTB + "(" + cId + "), "
+                + " FOREIGN KEY (" + aId + ") REFERENCES " + adminTB + "(" + aId + "));";
 
         String customerTBCreate = "create table "
                 + customerTB + " ("
@@ -109,6 +125,13 @@ public class p2pLendingDB extends SQLiteOpenHelper {
                 + dOB + " text not null, "
                 + fName + " text not null, "
                 + lName + " text not null"
+                + ");";
+
+        String adminTBCreate = "create table "
+                + adminTB + " ("
+                + aId + " integer primary key, "
+                + aUserName + " text not null, "
+                + aPassword + " text not null"
                 + ");";
 
         String borrowerTBCreate = "create table "
@@ -165,7 +188,22 @@ public class p2pLendingDB extends SQLiteOpenHelper {
                 + tDesc + " text not null unique"
                 + ");";
 
-        tableNameArray = new String[]{accountTBCreate, customerTBCreate, borrowerTBCreate, investorTBCreate, investmentTBCreate, loanTBCreate, transactionTBCreate};
+        String aDTransactionTBCreate = "create table "
+                + aDTransactionTB + " ("
+                + aId + " integer primary key, "
+                + tId + " integer primary key, "
+                + " FOREIGN KEY (" + aId + ") REFERENCES " + adminTB + "(" + aId + "), "
+                + " FOREIGN KEY (" + tId + ") REFERENCES " + transactionTB + "(" + tId + "));";
+
+        String cDTransactionTBCreate = "create table "
+                + cDTransactionTB + " ("
+                + cId + " integer primary key, "
+                + tId + " integer primary key, "
+                + " FOREIGN KEY (" + cId + ") REFERENCES " + customerTB + "(" + cId + "), "
+                + " FOREIGN KEY (" + tId + ") REFERENCES " + transactionTB + "(" + tId + "));";
+
+        tableNameArray = new String[]{accountTBCreate, adminTBCreate, customerTBCreate, borrowerTBCreate, investorTBCreate, investmentTBCreate,
+                loanTBCreate, transactionTBCreate, aDTransactionTBCreate, cDTransactionTBCreate};
         try {
             for (int i = 0; i < tableNameArray.length; i++) {
                 db.execSQL(tableNameArray[i]);
@@ -208,12 +246,14 @@ public class p2pLendingDB extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.i("Database", "Table successfully populated!");
         return numRecordsInserted;
     }
 
     public long insertIntoLoanTb(Loan aLoan) {
         myDb = getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(lId, aLoan.getlId());
         values.put(pOBorrowing, aLoan.getpOBorrowing());
         values.put(oFee, aLoan.getoFee());
         values.put(iRate, aLoan.getiRate());
@@ -231,7 +271,103 @@ public class p2pLendingDB extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Log.i("Database", "Table successfully populated!");
         return numRecordsInserted;
+    }
+
+    public ArrayList<String> extractFromLoanTbForMPA() {
+        myDb = getReadableDatabase();
+        ArrayList<String> loanList = new ArrayList<>();
+        String query = "select *  from " + loanTB;
+        Cursor cursor = myDb.rawQuery(query, null);
+        try {
+            while (cursor.moveToNext()) {
+                double bAmount = cursor.getInt(8);
+                int pPeriod = cursor.getInt(9);
+                loanList.add(String.valueOf(bAmount));
+                loanList.add(String.valueOf(pPeriod));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        cursor.close();
+        Log.i("Database", "Table successfully read!");
+        return loanList;
+    }
+
+    public long insertIntoInvestorTb(Investor anInvestor) {
+        myDb = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(inId, anInvestor.getInId());
+        values.put(pRLevel, anInvestor.getpRLevel());
+        values.put(sOFunds, anInvestor.getsOFunds());
+        values.put(icbAcc, anInvestor.getcBAccount());
+
+        try {
+            numRecordsInserted = myDb.insert(investorTB, null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.i("Database", "Table successfully populated!");
+        return numRecordsInserted;
+    }
+
+    public long insertIntoInvestmentTb(Investment aInvestment) {
+        myDb = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(iId, aInvestment.getiId());
+        values.put(sFee, aInvestment.getsFee());
+        values.put(mEarnings, aInvestment.getmEarnings());
+        values.put(aDeal, aInvestment.getaDeal());
+        values.put(aTerms, aInvestment.getaTerms());
+        values.put(tLAmount, aInvestment.gettLAmount());
+        values.put(cId, aInvestment.getcId());
+
+        try {
+            numRecordsInserted = myDb.insert(investmentTB, null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.i("Database", "Table successfully populated!");
+        return numRecordsInserted;
+    }
+
+    public ArrayList<String> extractFromInvestmentTbForMPA() {
+        myDb = getReadableDatabase();
+        ArrayList<String> investmentList = new ArrayList<>();
+        String query = "select *  from " + investmentTB;
+        Cursor cursor = myDb.rawQuery(query, null);
+        try {
+            while (cursor.moveToNext()) {
+                double mEarnings = cursor.getInt(2);
+                investmentList.add(String.valueOf(mEarnings));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        cursor.close();
+        Log.i("Database", "Table successfully read!");
+        return investmentList;
+    }
+
+    public ArrayList<String> extractFromInvestmentTbForCID() {
+        myDb = getReadableDatabase();
+        ArrayList<String> investmentList = new ArrayList<>();
+        String query = "select *  from " + investmentTB;
+        Cursor cursor = myDb.rawQuery(query, null);
+        try {
+            while (cursor.moveToNext()) {
+                double iId = cursor.getInt(0);
+                double mEarnings = cursor.getInt(2);
+                investmentList.add(String.valueOf(iId));
+                investmentList.add(String.valueOf(mEarnings));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        cursor.close();
+        Log.i("Database", "Table successfully read!");
+        return investmentList;
     }
 
     public long insertIntoAccountTb(Account account) {
@@ -266,21 +402,6 @@ public class p2pLendingDB extends SQLiteOpenHelper {
         return numRecordsInserted;
     }
 
-    public long insertIntoInvestorTb(Investor anInvestor) {
-        myDb = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(inId, anInvestor.getInId());
-        values.put(pRLevel, anInvestor.getpRLevel());
-        values.put(sOFunds, anInvestor.getsOFunds());
-        values.put(icbAcc, anInvestor.getcBAccount());
-
-        try {
-            numRecordsInserted = myDb.insert(investorTB, null, values);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return numRecordsInserted;
-    }
 
     public Boolean CheckUsername(String username) {
         myDb = getWritableDatabase();

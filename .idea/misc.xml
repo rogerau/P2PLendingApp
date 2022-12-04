@@ -3,7 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/activity_borrowers_application_form.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/activity_check_investment_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/activity_check_loan_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/activity_display_summary.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/activity_market_place_access.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/fragment_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/fragment_i_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/idetails_items.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/roger/CSIS3275project/app/src/main/res/layout/list_items.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/roger/Dropbox/Documentos Roger Augusto/POSTGRADUATE DOUGLAS COLLEGE/FALL 2022/Software Engineering/Project/FundMe App/app/src/main/res/drawable-v24/ic_baseline_visibility_24.xml" value="0.1935" />
         <entry key="..\:/Users/roger/Dropbox/Documentos Roger Augusto/POSTGRADUATE DOUGLAS COLLEGE/FALL 2022/Software Engineering/Project/FundMe App/app/src/main/res/drawable/roundstyle.xml" value="0.191" />
         <entry key="..\:/Users/roger/Dropbox/Documentos Roger Augusto/POSTGRADUATE DOUGLAS COLLEGE/FALL 2022/Software Engineering/Project/FundMe App/app/src/main/res/drawable/solidround.xml" value="0.191" />

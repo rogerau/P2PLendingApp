@@ -16,7 +16,10 @@ import com.example.p2plendingapp.Support.EmailSupport;
 public class MainDashboardInvestor extends AppCompatActivity {
 
     Button doAnInvestmentMDIBt, checkInvestmentDetailsMDIBt, talkWSupportMDIBt, getAccessPersonalInfoMDIBt;
-    Intent sIntent;
+    Intent sIntent, lIntent;
+    Boolean aTerms;
+    int cId;
+    String pRLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,11 @@ public class MainDashboardInvestor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sIntent = new Intent(getApplicationContext(), CheckInvestmentDetails.class);
+                //Pass the data received from the check investment details form
+                //to the check investment details
+                sIntent.putExtra("customer_id", cId);
+                sIntent.putExtra("agreed_terms", aTerms);
+                sIntent.putExtra("preferred_risk_lvl", pRLevel);
                 startActivity(sIntent);
             }
         });
@@ -55,4 +63,18 @@ public class MainDashboardInvestor extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        receiveDataFromMarketplace();
+    }
+
+    public void receiveDataFromMarketplace() {
+        lIntent = getIntent();
+        cId = lIntent.getIntExtra("customer_id", 0);
+        aTerms = lIntent.getBooleanExtra("agreed_terms", true);
+        pRLevel = lIntent.getStringExtra("preferred_risk_lvl");
+    }
+
 }

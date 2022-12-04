@@ -1,8 +1,10 @@
 package com.example.p2plendingapp.Borrower;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +19,21 @@ import com.example.p2plendingapp.R;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class DisplaySummary extends AppCompatActivity implements View.OnClickListener {
 
     Button acceptDisSumButton, rejectDisSumButton;
@@ -30,13 +43,16 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
     TextView riskLvlDisSumResult, borrowPDisSumResult, borrowADisSumResult, dateAgreeDisSumResult, interestRADisSumResult,
             oFeeDisSumResult, oFeeADisSumResult, mInstallmentDisSumResult;
     CheckBox checkLoanConditions;
-    double bAmount;
+    double bAmount, tAmountPaid, tAmountLeft;
     Boolean aTerms;
     String pOfBorrowing;
-    int bPeriod, cId;
+    int bPeriod, cId, temp1, temp2, temp3, temp4;
     String riskLvl;
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-    Date date = new Date();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    SimpleDateFormat formatter2 = new SimpleDateFormat("yyyy/MM/dd");
+    LocalDate dateAgreement = LocalDate.now();
+    LocalDate dateBefore, dateAfter;
+    Period months_passed;
     NumberFormat percentage = NumberFormat.getPercentInstance();
     NumberFormat currency = NumberFormat.getCurrencyInstance();
 
@@ -91,51 +107,92 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         riskLvlDisSumResult.setText(riskLvl);
         borrowPDisSumResult.setText(String.valueOf(bPeriod) + " months");
         borrowADisSumResult.setText(currency.format(bAmount));
-        dateAgreeDisSumResult.setText(formatter.format(date));
+        dateAgreeDisSumResult.setText(formatter.format(dateAgreement));
         interestRADisSumResult.setText(percentage.format(aLoan.getiRate()));
         oFeeDisSumResult.setText(percentage.format(aLoan.getoFee()));
         oFeeADisSumResult.setText(currency.format(aLoan.getoFeeAmount()));
         mInstallmentDisSumResult.setText(currency.format(aLoan.getmPAmount()));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void openCheckLoanDetails() {
         sIntent = new Intent(this, CheckLoanDetails.class);
         //Send data to the check loan details activity
         //Send the borrow amount
         sIntent.putExtra("borrow_amount", bAmount);
+
+//      Calculate months passed since date of agreement
+        dateBefore = dateAgreement;
+        if (bPeriod <= 12) {
+            dateAfter = LocalDate.of(2023, bPeriod, 03);
+        } else if (bPeriod <= 24) {
+            temp1 = bPeriod - 12;
+            dateAfter = LocalDate.of(2024, temp1, 03);
+        } else if (bPeriod <= 36) {
+            temp2 = bPeriod - 24;
+            dateAfter = LocalDate.of(2025, temp2, 03);
+        } else if (bPeriod <= 48) {
+            temp3 = bPeriod - 36;
+            dateAfter = LocalDate.of(2026, temp3, 03);
+        } else if (bPeriod <= 60) {
+            temp4 = bPeriod - 48;
+            dateAfter = LocalDate.of(2027, temp4, 03);
+        } else {
+            dateAfter = LocalDate.of(2027, temp4, 03);
+        }
+
+        months_passed = Period.between(dateBefore, dateAfter);
+        int num_months_passed = months_passed.getMonths();
+
+//      Calculate the total amount paid
+        tAmountPaid = num_months_passed * aLoan.getmPAmount();
+
+        //Calculate the total amount left
+        tAmountLeft = bAmount - tAmountPaid;
         //Send the total amount paid
-        sIntent.putExtra("payment_amount", 0);
+        sIntent.putExtra("payment_amount", tAmountPaid);
         //Send the total amount left
-        sIntent.putExtra("amount_left", 0);
+        sIntent.putExtra("amount_left", tAmountLeft);
+
+        Date dateBefore2 = Date.from(dateBefore.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date dateAfter2 = Date.from(dateAfter.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
         //Send the payment schedule as string array plus status as string array too
-        ArrayList<String> paymentScheduleList = new ArrayList<>();
-        paymentScheduleList.add("2023/01/03");
-        paymentScheduleList.add("2023/02/03");
-        paymentScheduleList.add("2023/03/03");
-        paymentScheduleList.add("2023/05/03");
-        paymentScheduleList.add("2023/06/03");
-        paymentScheduleList.add("2023/07/03");
-        paymentScheduleList.add("2023/08/03");
-        paymentScheduleList.add("2023/09/03");
-        paymentScheduleList.add("2023/10/03");
-        paymentScheduleList.add("2023/11/03");
-        paymentScheduleList.add("2023/12/03");
+        List paymentScheduleList = getDatesBetweenUsingJava7(dateBefore2, dateAfter2);
         ArrayList<String> statusArray = new ArrayList<>();
-        statusArray.add("paid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        statusArray.add("unpaid");
-        sIntent.putStringArrayListExtra("payment_schedule", paymentScheduleList);
+        ArrayList<String> paymentScheduleList2 = new ArrayList<>();
+        for (int i = 0; i < paymentScheduleList.size(); i++) {
+            paymentScheduleList2.add(formatter2.format(paymentScheduleList.get(i)));
+            statusArray.add("unpaid");
+        }
+        sIntent.putStringArrayListExtra("payment_schedule", paymentScheduleList2);
         sIntent.putStringArrayListExtra("payment_status", statusArray);
         startActivity(sIntent);
+    }
+
+    public static List getDatesBetweenUsingJava7(Date startDate, Date endDate) {
+        List datesInRange = new ArrayList<>();
+        Calendar calendar = getCalendarWithoutTime(startDate);
+        Calendar endCalendar = getCalendarWithoutTime(endDate);
+
+        while (calendar.before(endCalendar)) {
+            Date result = calendar.getTime();
+            datesInRange.add(result);
+            calendar.add(Calendar.DATE, 1);
+        }
+
+        return datesInRange;
+    }
+
+    private static Calendar getCalendarWithoutTime(Date date) {
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar;
     }
 
     public void returnToMainDashBoard() {
@@ -160,21 +217,20 @@ public class DisplaySummary extends AppCompatActivity implements View.OnClickLis
         aLoan.setlAmount(bAmount);
         aLoan.setpPeriod(bPeriod);
         aLoan.setmPAmount(bAmount);
-        aLoan.setsDOAgreement(formatter.format(date));
+        aLoan.setsDOAgreement(formatter.format(dateAgreement));
         aLoan.setcId(cId);
         //Insert the data into the Loan table
         long numInserted = db.insertIntoLoanTb(aLoan);
         Toast.makeText(this, numInserted + " row(s) were inserted!", Toast.LENGTH_SHORT).show();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.acceptDisSumButton) {
             if (checkLoanConditions.isChecked()) {
                 //Display check loan details
                 openCheckLoanDetails();
-                //Store loan data into the loan table
-                storeLoanDataIntoLoanTable();
             } else {
                 Toast.makeText(this, "You must check first!", Toast.LENGTH_SHORT).show();
             }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ListAdapterClass extends ArrayAdapter<Opportunities> {
 
-    TextView id, borrowerId, borrowerAmount, borrowPeriod, riskLvl, eEarnings;
+    TextView id, borrowerAmount, riskLvl, eEarnings;
     CheckBox checkBox;
 
     public ListAdapterClass(Context context, ArrayList<Opportunities> opportunities) {
@@ -32,19 +32,15 @@ public class ListAdapterClass extends ArrayAdapter<Opportunities> {
         }
         // Lookup view for data population
         id = (TextView) convertView.findViewById(R.id.id);
-        borrowerId = (TextView) convertView.findViewById(R.id.borrowerId);
         borrowerAmount = (TextView) convertView.findViewById(R.id.borrowerAmount);
-        borrowPeriod = (TextView) convertView.findViewById(R.id.borrowPeriod);
         riskLvl = (TextView) convertView.findViewById(R.id.riskLvl);
         eEarnings = (TextView) convertView.findViewById(R.id.eEarnings);
         checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
         // Populate the data into the template view using the data object
-        id.setText(String.valueOf(opportunities.getId()));
-        borrowerId.setText(opportunities.getBorrowerId());
+        id.setText(String.valueOf(opportunities.getOpId()));
         borrowerAmount.setText(String.valueOf(opportunities.getBorrowAmount()));
-        borrowPeriod.setText(String.valueOf(opportunities.getBorrowPeriod()));
         riskLvl.setText(opportunities.getRiskLvl());
-        eEarnings.setText(String.valueOf(opportunities.geteEarnings()));
+        eEarnings.setText(String.valueOf(opportunities.seteEarnings()));
         checkBox.setChecked(opportunities.isChecked());
         // Return the completed view to render on screen
         return convertView;

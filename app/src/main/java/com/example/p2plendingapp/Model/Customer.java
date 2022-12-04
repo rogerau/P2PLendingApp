@@ -1,8 +1,8 @@
 package com.example.p2plendingapp.Model;
 
-public class Customer {
+public abstract class Customer {
 
-    //    private Integer cId;
+    private int cId;
     private String dOB;
     private String fName;
     private String lName;
@@ -11,20 +11,20 @@ public class Customer {
 
     }
 
-    public Customer(String dOB, String fName, String lName) {
-//        this.cId = cId;
+    public Customer(int cid, String dOB, String fName, String lName) {
+        this.cId = cid;
         this.dOB = dOB;
         this.fName = fName;
         this.lName = lName;
     }
 
-//    public Integer getcId() {
-//        return cId;
-//    }
-//
-//    public void setcId(Integer cId) {
-//        this.cId = cId;
-//    }
+    public int getcId() {
+        return cId;
+    }
+
+    public void setcId(int cId) {
+        this.cId = cId;
+    }
 
     public String getdOB() {
         return dOB;

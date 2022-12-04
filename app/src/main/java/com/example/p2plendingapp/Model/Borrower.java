@@ -1,8 +1,8 @@
 package com.example.p2plendingapp.Model;
 
-public class Borrower {
+public class Borrower extends Customer {
 
-    private Integer bId;
+    private int bId;
     private String pStatus;
     private double hmExp;
     private String rStatus;
@@ -16,7 +16,7 @@ public class Borrower {
     }
 
 
-    public Borrower(Integer bId, String pStatus, double hmExp, String rStatus, double mNetIncome, double mSNetIncome, String mStatus, String cBAccount) {
+    public Borrower(int bId, String pStatus, double hmExp, String rStatus, double mNetIncome, double mSNetIncome, String mStatus, String cBAccount) {
         this.bId = bId;
         this.pStatus = pStatus;
         this.hmExp = hmExp;
@@ -27,12 +27,12 @@ public class Borrower {
         this.cBAccount = cBAccount;
     }
 
-    public void setbId(Integer bId) {
-        this.bId = bId;
+    public int getbId() {
+        return bId;
     }
 
-    public Integer getbId() {
-        return bId;
+    public void setbId(int bId) {
+        this.bId = bId;
     }
 
     public String getcBAccount() {
@@ -93,9 +93,9 @@ public class Borrower {
     }
 
     public String setRiskLvl() {
-        if (this.pStatus == "rent") {
-            if (this.mStatus == "single") {
-                if (this.rStatus == "temporary") {
+        if (this.pStatus.equals("rent")) {
+            if (this.mStatus.equals("single")) {
+                if (this.rStatus.equals("temporary")) {
                     if (this.hmExp >= this.mNetIncome) {
                         return "High Risk";
                     } else {
@@ -109,7 +109,7 @@ public class Borrower {
                     }
                 }
             } else {
-                if (this.rStatus == "temporary") {
+                if (this.rStatus.equals("temporary")) {
                     if (this.hmExp >= this.mNetIncome + this.mSNetIncome) {
                         return "Low high risk";
                     } else {
@@ -126,7 +126,7 @@ public class Borrower {
                 }
             }
         } else {
-            if (this.mStatus == "single") {
+            if (this.mStatus.equals("single")) {
                 if (this.hmExp >= this.mNetIncome) {
                     return "Low medium risk";
                 } else {
